@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motors | Concessionária Premium</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter e JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            400: '#a78bfa',
+                            500: '#8b5cf6', // Roxo Violeta Principal
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#2e1065',
+                            accent: '#3b82f6', // Azul Accent
+                            accentDark: '#1d4ed8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Sombra e transições customizadas */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.15), 0 10px 10px -5px rgba(59, 130, 246, 0.1);
+        }
+        .brand-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2e1065 100%);
+        }
+        .brand-accent-gradient {
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-full flex flex-col font-sans antialiased">
+
+    <!-- NAVBAR TOP -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- LOGO Motors -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl brand-accent-gradient flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-purple-500/30 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                            Motors<span class="text-brand-500">.</span>
+                        </span>
+                        <span class="block text-[10px] font-mono tracking-widest text-slate-400 uppercase -mt-1">Performance & Luxo</span>
+                    </div>
+                </a>
+
+                <!-- NAV DESKTOP -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                    <a href="#estoque" class="text-slate-700 dark:text-slate-200 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Estoque</a>
+                    <a href="#simulacao" class="text-slate-700 dark:text-slate-200 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Financiamento</a>
+                    <a href="#diferenciais" class="text-slate-700 dark:text-slate-200 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Vantagens</a>
+                    <a href="#contato" class="text-slate-700 dark:text-slate-200 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Contato</a>
+                </nav>
+
+                <!-- BOTÕES DIREITA -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="#estoque" class="px-5 py-2.5 rounded-xl font-semibold text-sm text-white brand-accent-gradient hover:opacity-90 shadow-lg shadow-purple-500/25 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Ver Ofertas
+                    </a>
+                </div>
+
+                <!-- MENU MOBILE BUTTON -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MENU MOBILE DROPDOWN -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-2">
+            <a href="#estoque" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Estoque</a>
+            <a href="#simulacao" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Financiamento</a>
+            <a href="#diferenciais" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Vantagens</a>
+            <a href="#contato" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Contato</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION BANNER -->
+    <section class="relative brand-gradient text-white py-20 lg:py-28 overflow-hidden">
+        <!-- Elementos decorativos em roxo e azul -->
+        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#8b5cf6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-purple-500/30 text-purple-300 text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+                        <span>MOTORS AUTOMOTIVE SYSTEM Active</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        A performance que seu estilo de vida <span class="text-transparent bg-clip-text brand-accent-gradient">exige.</span>
+                    </h1>
+                    <p class="text-slate-300 text-lg sm:text-xl max-w-2xl font-light">
+                        Explore nosso acervo exclusivo de veículos seminovos e zero km rigorosamente inspecionados com garantia estendida.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#estoque" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-white brand-accent-gradient hover:opacity-90 transition-all shadow-lg shadow-purple-500/30 text-center">
+                            Explorar Catálogo
+                        </a>
+                        <a href="#simulacao" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white bg-slate-800/80 hover:bg-slate-700 border border-slate-700 transition-all text-center">
+                            Simular Crédito
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md bg-slate-900/70 backdrop-blur-md p-6 rounded-2xl border border-purple-500/20 shadow-2xl space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                            <span class="font-mono text-xs text-slate-400">MOTORS SHOWROOM</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30">DISPONÍVEL</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="p-4 bg-slate-950/50 rounded-xl border border-slate-800">
+                                <span class="block text-3xl font-extrabold text-white">120+</span>
+                                <span class="text-xs text-slate-400 uppercase font-mono">Carros Prontos</span>
+                            </div>
+                            <div class="p-4 bg-slate-950/50 rounded-xl border border-slate-800">
+                                <span class="block text-3xl font-extrabold text-purple-400">100%</span>
+                                <span class="text-xs text-slate-400 uppercase font-mono">Inspecionados</span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-purple-950/30 rounded-xl border border-purple-500/30 flex items-center gap-3">
+                            <i class="fa-solid fa-shield-halved text-purple-400 text-xl"></i>
+                            <div class="text-xs text-slate-300">
+                                <strong>Garantia Motors Premium</strong> em motor e câmbio para todos os modelos cadastrados.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAINEL DE FILTROS DE BUSCA E NAVEGAÇÃO -->
+    <section id="estoque" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6">
+            <div class="mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-700/50 pb-4">
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-filter text-brand-500"></i> Filtrar Estoque
+                </h2>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400" id="results-count">Exibindo 6 de 6 veículos</span>
+            </div>
+
+            <!-- FORM DE FILTRAGEM DINÂMICA -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- BUSCA TEXTO -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Buscar por Modelo</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400"></i>
+                        <input type="text" id="filter-search" placeholder="Ex: BMW, Civic, SUV..." class="w-full pl-9 pr-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                </div>
+
+                <!-- SELECT MARCA -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Marca</label>
+                    <select id="filter-brand" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <option value="">Todas as Marcas</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Volvo">Volvo</option>
+                    </select>
+                </div>
+
+                <!-- SELECT ANO -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Ano Mínimo</label>
+                    <select id="filter-year" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <option value="0">Qualquer Ano</option>
+                        <option value="2023">2023+</option>
+                        <option value="2022">2022+</option>
+                        <option value="2021">2021+</option>
+                    </select>
+                </div>
+
+                <!-- SELECT PREÇO MÁX -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Preço Máximo</label>
+                    <select id="filter-price" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <option value="9999999">Sem limite</option>
+                        <option value="150000">Até R$ 150.000</option>
+                        <option value="250000">Até R$ 250.000</option>
+                        <option value="400000">Até R$ 400.000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRID DE VEÍCULOS EM DESTAQUE -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
+        <div id="cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Os cards dos veículos serão renderizados via Javascript dinamicamente -->
+        </div>
+
+        <!-- MENSAGEM CASO NENHUM CARRO SEJA ENCONTRADO -->
+        <div id="no-results" class="hidden text-center py-16">
+            <i class="fa-solid fa-car-burst text-5xl text-slate-300 dark:text-slate-600 mb-4"></i>
+            <h3 class="text-lg font-bold text-slate-700 dark:text-slate-300">Nenhum veículo encontrado</h3>
+            <p class="text-sm text-slate-500">Tente redefinir os seus filtros de busca para encontrar outras opções.</p>
+        </div>
+    </main>
+
+    <!-- SEÇÃO SIMULADOR DE FINANCIAMENTO -->
+    <section id="simulacao" class="bg-slate-100 dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-10">
+                <span class="text-brand-500 font-mono text-xs font-bold uppercase tracking-widest">MOTORS_FINANCE_SERVICE</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Simulador de Financiamento</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm">Calcule as parcelas estimadas para o seu próximo veículo de forma instantânea.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- ENTRADAS DA SIMULAÇÃO -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Valor Total do Veículo (R$)</label>
+                            <input type="number" id="sim-price" value="180000" class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-mono text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Valor de Entrada (R$)</label>
+                            <input type="number" id="sim-entry" value="50000" class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-mono text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Número de Parcelas</label>
+                            <select id="sim-months" class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                <option value="12">12 meses</option>
+                                <option value="24">24 meses</option>
+                                <option value="36">36 meses</option>
+                                <option value="48" selected>48 meses</option>
+                                <option value="60">60 meses</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- RESULTADO DA SIMULAÇÃO -->
+                    <div class="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono text-slate-400 block mb-1">ESTIMATIVA MENSAL</span>
+                            <div class="text-3xl font-extrabold text-brand-500 font-mono" id="sim-result-installment">R$ 3.840,00 /mês</div>
+                            <p class="text-[11px] text-slate-500 mt-2">* Taxa de juros estimada em 1,29% a.m. Sujeito à análise de crédito do banco parceiro.</p>
+                        </div>
+
+                        <div class="space-y-2 pt-6 border-t border-slate-200 dark:border-slate-700">
+                            <div class="flex justify-between text-xs text-slate-600 dark:text-slate-300">
+                                <span>Valor Financiado:</span>
+                                <span class="font-mono font-bold" id="sim-result-financed">R$ 130.000,00</span>
+                            </div>
+                            <button onclick="alert('Solicitação enviada com sucesso! Um consultor Motors entrará em contato.')" class="w-full mt-4 py-3 rounded-xl font-bold text-white brand-accent-gradient hover:opacity-90 shadow-md transition-all text-sm">
+                                Solicitar Análise de Crédito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DIFERENCIAIS -->
+    <section id="diferenciais" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">Por que escolher a Motors?</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">Tecnologia, transparência e segurança do início ao fim da sua compra.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-brand-500 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Laudo Cautelar 100%</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Todos os veículos passam por verificação de estrutura, histórico e documentação sem apontamentos.</p>
+            </div>
+
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-handshake font-bold"></i>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Avaliação Justa na Troca</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Usamos dados de mercado atualizados para pagar o valor justo pelo seu veículo seminovo na troca.</p>
+            </div>
+
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-brand-500 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Aprovação Rápida</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Integração com os principais bancos para aprovação do seu financiamento em minutos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DETALHES DO VEÍCULO -->
+    <div id="car-modal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-3xl w-full border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden relative animate-fade-in">
+            <!-- BOTÃO FECHAR -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-slate-800/60 hover:bg-slate-800 text-white rounded-full flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <!-- IMAGEM MODAL -->
+                <div class="h-64 md:h-full bg-slate-800 relative">
+                    <img id="modal-img" src="" alt="Carro" class="w-full h-full object-cover">
+                    <span id="modal-tag" class="absolute top-4 left-4 bg-brand-500 text-white font-mono text-xs px-2.5 py-1 rounded-md font-bold uppercase"></span>
+                </div>
+
+                <!-- CONTEÚDO MODAL -->
+                <div class="p-6 space-y-4">
+                    <div>
+                        <span id="modal-brand" class="text-xs font-mono text-brand-500 uppercase font-bold tracking-wider"></span>
+                        <h3 id="modal-title" class="text-2xl font-bold text-slate-900 dark:text-white"></h3>
+                        <p id="modal-price" class="text-2xl font-extrabold text-brand-500 font-mono mt-1"></p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 text-xs border-y border-slate-200 dark:border-slate-800 py-3">
+                        <div><span class="text-slate-400">Ano:</span> <strong id="modal-year" class="block font-mono text-slate-800 dark:text-slate-200"></strong></div>
+                        <div><span class="text-slate-400">Km:</span> <strong id="modal-km" class="block font-mono text-slate-800 dark:text-slate-200"></strong></div>
+                        <div><span class="text-slate-400">Câmbio:</span> <strong id="modal-gear" class="block font-mono text-slate-800 dark:text-slate-200"></strong></div>
+                        <div><span class="text-slate-400">Combustível:</span> <strong id="modal-fuel" class="block font-mono text-slate-800 dark:text-slate-200"></strong></div>
+                    </div>
+
+                    <p id="modal-desc" class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed"></p>
+
+                    <div class="pt-2 flex gap-3">
+                        <button onclick="alert('Iniciando contato via WhatsApp com o consultor Motors...')" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Falar no WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer id="contato" class="bg-slate-950 text-slate-400 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- COLUNA 1 -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-lg brand-accent-gradient flex items-center justify-center text-white font-bold text-sm">
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                        <span class="text-lg font-extrabold text-white">Motors<span class="text-brand-500">.</span></span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Concessionária modelo focada em automóveis premium e esportivos. Excelência, inovação e atendimento personalizado.
+                    </p>
+                </div>
+
+                <!-- COLUNA 2 -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase font-mono mb-3">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#estoque" class="hover:text-brand-400 transition-colors">Estoque Completo</a></li>
+                        <li><a href="#simulacao" class="hover:text-brand-400 transition-colors">Simular Financiamento</a></li>
+                        <li><a href="#diferenciais" class="hover:text-brand-400 transition-colors">Garantia Motors</a></li>
+                    </ul>
+                </div>
+
+                <!-- COLUNA 3 -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase font-mono mb-3">Atendimento</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-brand-500"></i> (11) 4004-8899</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-brand-500"></i> contato@motors.com.br</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-500"></i> Av. das Nações Unidas, 1000 - SP</li>
+                    </ul>
+                </div>
+
+                <!-- COLUNA 4 -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase font-mono mb-3">Horário de Funcionamento</h4>
+                    <p class="text-slate-400">Segunda a Sexta: 08:00 - 19:00</p>
+                    <p class="text-slate-400">Sábados: 09:00 - 17:00</p>
+                    <div class="mt-4 flex gap-3 text-lg">
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center hover:text-brand-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center hover:text-brand-400 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center hover:text-brand-400 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-500">
+                <p>&copy; 2026 Motors Vehicles Inc. Todos os direitos reservados.</p>
+                <div class="font-mono text-[11px] text-slate-600">
+                    STATUS: <span class="text-brand-500">200 OK</span> | MOTORS_READY
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT DINÂMICA -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        spring: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            400: '#4ade80',
+                            500: '#6db33f', // Tom verde clássico Spring Framework
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#0f381e',
+                            dark: '#1e293b',
+                            darker: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Sombra e transições customizadas */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .spring-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f381e 100%);
+        }
+        .spring-accent-gradient {
+            background: linear-gradient(135deg, #6db33f 0%, #34d399 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-full flex flex-col font-sans antialiased">
+
+    <!-- NAVBAR TOP -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- LOGO estilo Spring Framework -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl spring-accent-gradient flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-spring-500/30 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                            Spring<span class="text-spring-500">Auto</span>
+                        </span>
+                        <span class="block text-[10px] font-mono tracking-widest text-slate-400 uppercase -mt-1">Framework Veicular</span>
+                    </div>
+                </a>
+
+                <!-- NAV DESKTOP -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                    <a href="#estoque" class="text-slate-700 dark:text-slate-200 hover:text-spring-500 dark:hover:text-spring-400 transition-colors">Estoque</a>
+                    <a href="#simulacao" class="text-slate-700 dark:text-slate-200 hover:text-spring-500 dark:hover:text-spring-400 transition-colors">Financiamento</a>
+                    <a href="#diferenciais" class="text-slate-700 dark:text-slate-200 hover:text-spring-500 dark:hover:text-spring-400 transition-colors">Vantagens</a>
+                    <a href="#contato" class="text-slate-700 dark:text-slate-200 hover:text-spring-500 dark:hover:text-spring-400 transition-colors">Contato</a>
+                </nav>
+
+                <!-- BOTÕES DIREITA -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="#estoque" class="px-5 py-2.5 rounded-xl font-semibold text-sm text-white spring-accent-gradient hover:opacity-90 shadow-lg shadow-spring-500/20 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Ver Ofertas
+                    </a>
+                </div>
+
+                <!-- MENU MOBILE BUTTON -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MENU MOBILE DROPDOWN -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-2">
+            <a href="#estoque" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Estoque</a>
+            <a href="#simulacao" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Financiamento</a>
+            <a href="#diferenciais" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Vantagens</a>
+            <a href="#contato" class="block py-2 text-slate-700 dark:text-slate-200 font-medium">Contato</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION BANNER -->
+    <section class="relative spring-gradient text-white py-20 lg:py-28 overflow-hidden">
+        <!-- Elementos decorativos estilo linhas de código/tech -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6db33f_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-spring-500/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-spring-500/30 text-spring-400 text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-spring-400 animate-pulse"></span>
+                        <span>SPRING_AUTO_BOOT v3.2 ACTIVE</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        A performance que seu estilo de vida <span class="text-transparent bg-clip-text spring-accent-gradient">exige.</span>
+                    </h1>
+                    <p class="text-slate-300 text-lg sm:text-xl max-w-2xl font-light">
+                        Explore nosso acervo de veículos seminovos e zero km inspecionados com precisão e garantia estendida.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#estoque" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-slate-900 bg-spring-400 hover:bg-spring-500 transition-all shadow-lg shadow-spring-500/30 text-center">
+                            Explorar Catálogo
+                        </a>
+                        <a href="#simulacao" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white bg-slate-800/80 hover:bg-slate-700 border border-slate-700 transition-all text-center">
+                            Simular Crédito
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD ESTATÍSTICA DESTAQUE HERO -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md bg-slate-800/60 backdrop-blur-md p-6 rounded-2xl border border-slate-700/60 shadow-2xl space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+                            <span class="font-mono text-xs text-slate-400">STATUS DA LOJA</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-spring-500/20 text-spring-400 border border-spring-500/30">DISPONÍVEL</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="p-4 bg-slate-900/50 rounded-xl border border-slate-700/40">
+                                <span class="block text-3xl font-extrabold text-white">120+</span>
+                                <span class="text-xs text-slate-400 uppercase font-mono">Carros Prontos</span>
+                            </div>
+                            <div class="p-4 bg-slate-900/50 rounded-xl border border-slate-700/40">
+                                <span class="block text-3xl font-extrabold text-spring-400">100%</span>
+                                <span class="text-xs text-slate-400 uppercase font-mono">Inspecionados</span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-spring-900/30 rounded-xl border border-spring-500/30 flex items-center gap-3">
+                            <i class="fa-solid fa-shield-halved text-spring-400 text-xl"></i>
+                            <div class="text-xs text-slate-300">
+                                <strong>Garantia de 1 Ano</strong> em motor e câmbio para todos os modelos cadastrados.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAINEL DE FILTROS DE BUSCA E NAVEGAÇÃO -->
+    <section id="estoque" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6">
+            <div class="mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-700/50 pb-4">
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-filter text-spring-500"></i> Filtrar Estoque
+                </h2>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400" id="results-count">Exibindo 6 de 6 veículos</span>
+            </div>
+
+            <!-- FORM DE FILTRAGEM DINÂMICA -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- BUSCA TEXTO -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Buscar por Modelo</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400"></i>
+                        <input type="text" id="filter-search" placeholder="Ex: BMW, Civic, SUV..." class="w-full pl-9 pr-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-spring-500">
+                    </div>
+                </div>
+
+                <!-- SELECT MARCA -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Marca</label>
+                    <select id="filter-brand" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-spring-500">
+                        <option value="">Todas as Marcas</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Volvo">Volvo</option>
+                    </select>
+                </div>
+
+                <!-- SELECT ANO -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Ano Mínimo</label>
+                    <select id="filter-year" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-spring-500">
+                        <option value="0">Qualquer Ano</option>
+                        <option value="2023">2023+</option>
+                        <option value="2022">2022+</option>
+                        <option value="2021">2021+</option>
+                    </select>
+                </div>
+
+                <!-- SELECT PREÇO MÁX -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Preço Máximo</label>
+                    <select id="filter-price" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-spring-500">
+                        <option value="9999999">Sem limite</option>
+                        <option value="150000">Até R$ 150.000</option>
+                        <option value="250000">Até R$ 250.000</option>
+                        <option value="400000">Até R$ 400.000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRID DE VEÍCULOS EM DESTAQUE -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
+        <div id="cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Os cards dos veículos serão renderizados via Javascript dinamicamente -->
+        </div>
+
+        <!-- MENSAGEM CASO NENHUM CARRO SEJA ENCONTRADO -->
+        <div id="no-results" class="hidden text-center py-16">
+            <i class="fa-solid fa-car-burst text-5xl text-slate-300 dark:text-slate-600 mb-4"></i>
+            <h3 class="text-lg font-bold text-slate-700 dark:text-slate-300">Nenhum veículo encontrado</h3>
+            <p class="text-sm text-slate-500">Tente redefinir os seus filtros de busca para encontrar outras opções.</p>
+        </div>
+    </main>
+
+    <!-- SEÇÃO SIMULADOR DE FINANCIAMENTO (Thymeleaf Style dynamic UI) -->
+    <section id="simulacao" class="bg-slate-100 dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-10">
+                <span class="text-spring-500 font-mono text-xs font-bold uppercase tracking-widest">SPRING_FINANCE_SERVICE</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Simulador de Financiamento</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm">Calcule as parcelas estimadas para o seu próximo veículo de forma instantânea.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- ENTRADAS DA SIMULAÇÃO -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Valor Total do Veículo (R$)</label>
+                            <input type="number" id="sim-price" value="180000" class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-mono text-sm focus:ring-2 focus:ring-spring-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Valor de Entrada (R$)</label>
+                            <input type="number" id="sim-entry" value="50000" class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-mono text-sm focus:ring-2 focus:ring-spring-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Número de Parcelas</label>
+                            <select id="sim-months" class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-spring-500 focus:outline-none">
+                                <option value="12">12 meses</option>
+                                <option value="24">24 meses</option>
+                                <option value="36">36 meses</option>
+                                <option value="48" selected>48 meses</option>
+                                <option value="60">60 meses</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- RESULTADO DA SIMULAÇÃO -->
+                    <div class="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono text-slate-400 block mb-1">ESTIMATIVA MENSAL</span>
+                            <div class="text-3xl font-extrabold text-spring-500 font-mono" id="sim-result-installment">R$ 3.840,00 /mês</div>
+                            <p class="text-[11px] text-slate-500 mt-2">* Taxa de juros estimada em 1,29% a.m. Sujeito à análise de crédito do banco parceiro.</p>
+                        </div>
+
+                        <div class="space-y-2 pt-6 border-t border-slate-200 dark:border-slate-700">
+                            <div class="flex justify-between text-xs text-slate-600 dark:text-slate-300">
+                                <span>Valor Financiado:</span>
+                                <span class="font-mono font-bold" id="sim-result-financed">R$ 130.000,00</span>
+                            </div>
+                            <button onclick="alert('Solicitação enviada com sucesso! Um consultor entrará em contato.')" class="w-full mt-4 py-3 rounded-xl font-bold text-white spring-accent-gradient hover:opacity-90 shadow-md transition-all text-sm">
+                                Solicitar Análise de Crédito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DIFERENCIAIS -->
+    <section id="diferenciais" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">Por que escolher a SpringAuto?</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">Tecnologia, transparência e segurança do início ao fim da sua compra.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-spring-500/10 text-spring-500 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Laudo Cautelar 100%</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Todos os veículos passam por verificação de estrutura, histórico e documentação sem apontamentos.</p>
+            </div>
+
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-spring-500/10 text-spring-500 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-handshake font-bold"></i>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Avaliação Justa na Troca</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Usamos dados de mercado atualizados para pagar o valor justo pelo seu veículo seminovo na troca.</p>
+            </div>
+
+            <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-spring-500/10 text-spring-500 flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Aprovação Rápida</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Integração com os principais bancos para aprovação do seu financiamento em minutos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DETALHES DO VEÍCULO -->
+    <div id="car-modal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-3xl w-full border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden relative animate-fade-in">
+            <!-- BOTÃO FECHAR -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-slate-800/60 hover:bg-slate-800 text-white rounded-full flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <!-- IMAGEM MODAL -->
+                <div class="h-64 md:h-full bg-slate-800 relative">
+                    <img id="modal-img" src="" alt="Carro" class="w-full h-full object-cover">
+                    <span id="modal-tag" class="absolute top-4 left-4 bg-spring-500 text-white font-mono text-xs px-2.5 py-1 rounded-md font-bold uppercase"></span>
+                </div>
+
+                <!-- CONTEÚDO MODAL -->
+                <div class="p-6 space-y-4">
+                    <div>
+                        <span id="modal-brand" class="text-xs font-mono text-spring-500 uppercase font-bold tracking-wider"></span>
+                        <h3 id="modal-title" class="text-2xl font-bold text-slate-900 dark:text-white"></h3>
+                        <p id="modal-price" class="text-2xl font-extrabold text-spring-500 font-mono mt-1"></p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 text-xs border-y border-slate-200 dark:border-slate-800 py-3">
+                        <div><span class="text-slate-400">Ano:</span> <strong id="modal-year" class="block font-mono text-slate-800 dark:text-slate-200"></strong></div>
+                        <div><span class="text-slate-400">Km:</span> <strong id="modal-km" class="block font-mono text-slate-800 dark:text-slate-200"></strong></div>
+                        <div><span class="text-slate-400">Câmbio:</span> <strong id="modal-gear" class="block font-mono text-slate-800 dark:text-slate-200"></strong></div>
+                        <div><span class="text-slate-400">Combustível:</span> <strong id="modal-fuel" class="block font-mono text-slate-800 dark:text-slate-200"></strong></div>
+                    </div>
+
+                    <p id="modal-desc" class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed"></p>
+
+                    <div class="pt-2 flex gap-3">
+                        <button onclick="alert('Iniciando contato via WhatsApp com o consultor...')" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Falar no WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer id="contato" class="bg-slate-900 text-slate-400 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- COLUNA 1 -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-lg spring-accent-gradient flex items-center justify-center text-white font-bold text-sm">
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                        <span class="text-lg font-extrabold text-white">Spring<span class="text-spring-500">Auto</span></span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Concessionária modelo inspirada nos padrões modernos de desenvolvimento Spring Boot. Simplicidade, rapidez e confiabilidade.
+                    </p>
+                </div>
+
+                <!-- COLUNA 2 -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase font-mono mb-3">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#estoque" class="hover:text-spring-400 transition-colors">Estoque Completo</a></li>
+                        <li><a href="#simulacao" class="hover:text-spring-400 transition-colors">Simular Financiamento</a></li>
+                        <li><a href="#diferenciais" class="hover:text-spring-400 transition-colors">Garantia Spring</a></li>
+                    </ul>
+                </div>
+
+                <!-- COLUNA 3 -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase font-mono mb-3">Atendimento</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-spring-500"></i> (11) 4004-5566</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-spring-500"></i> contato@springauto.com.br</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-spring-500"></i> Av. das Nações Unidas, 1000 - SP</li>
+                    </ul>
+                </div>
+
+                <!-- COLUNA 4 -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase font-mono mb-3">Horário de Funcionamento</h4>
+                    <p class="text-slate-400">Segunda a Sexta: 08:00 - 19:00</p>
+                    <p class="text-slate-400">Sábados: 09:00 - 17:00</p>
+                    <div class="mt-4 flex gap-3 text-lg">
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:text-spring-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:text-spring-400 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:text-spring-400 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-500">
+                <p>&copy; 2026 SpringAuto Vehicles Inc. Todos os direitos reservados.</p>
+                <div class="font-mono text-[11px] text-slate-600">
+                    STATUS: <span class="text-spring-500">200 OK</span> | THYMELEAF_READY
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT DINÂMICA (ESTILO CONTROLLER SPRING) -->
+    <script>
+        // Dados Mockados dos Veículos (Simulando API/Banco de dados)
+        const carsData = [
+            {
+                id: 1,
+                brand: "BMW",
+                model: "320i M Sport 2.0 Turbo",
+                year: 2023,
+                price: 289900,
+                km: 14500,
+                fuel: "Flex",
+                gear: "Automático",
+                tag: "Destaque",
+                image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80",
+                description: "BMW 320i M Sport impecável, único dono, todas as revisões feitas na concessionária. Teto solar, faróis Full-LED, painel TFT expansivo e bancos em couro com memória."
+            },
+            {
+                id: 2,
+                brand: "Porsche",
+                model: "Macan 2.0 Turbo 252cv",
+                year: 2022,
+                price: 430000,
+                km: 22000,
+                fuel: "Gasolina",
+                gear: "PDK 7 marchas",
+                tag: "Premium",
+                image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
+                description: "Porsche Macan com pacote Sport Chrono, escape esportivo com seletor, tração integral e acabamento interno estendido em couro terroso."
+            },
+            {
+                id: 3,
+                brand: "Audi",
+                model: "A4 Sedan Performance 2.0",
+                year: 2021,
+                price: 215000,
+                km: 38000,
+                fuel: "Gasolina",
+                gear: "S-Tronic",
+                tag: "Oportunidade",
+                image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80",
+                description: "Audi A4 Performance Quattro com som Bang & Olufsen, virtual cockpit, tração integral e piloto automático adaptativo (ACC)."
+            },
+            {
+                id: 4,
+                brand: "Toyota",
+                model: "Corolla Cross XRE 2.0",
+                year: 2023,
+                price: 149900,
+                km: 18500,
+                fuel: "Flex",
+                gear: "CVT 10m",
+                tag: "Novo",
+                image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=80",
+                description: "Corolla Cross em estado de zero quilômetro. Chave presencial, Toyota Safety Sense, central multimídia com Android Auto e CarPlay sem fio."
+            },
+            {
+                id: 5,
+                brand: "Honda",
+                model: "Civic Touring 1.5 Turbo",
+                year: 2021,
+                price: 139000,
+                km: 41000,
+                fuel: "Gasolina",
+                gear: "CVT",
+                tag: "Revisado",
+                image: "https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=800&q=80",
+                description: "Civic Touring topo de linha, teto solar elétrico, câmera no retrovisor para ponto cego (LaneWatch) e faróis Full-LED originais."
+            },
+            {
+                id: 6,
+                brand: "Volvo",
+                model: "XC60 T8 Hybrid R-Design",
+                year: 2022,
+                price: 339000,
+                km: 29000,
+                fuel: "Híbrido",
+                gear: "Automático",
+                tag: "Híbrido",
+                image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
+                description: "Volvo XC60 Híbrido plug-in com mais de 400cv combinados, teto panorâmico, som Bowers & Wilkins e modo autônomo Pilot Assist."
+            }
+        ];
+
+        // Formatação de valor em Reais (R$)
+        function formatCurrency(val) {
+            return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+        }
+
+        // Renderizar lista de carros
+        function renderCars(cars) {
+            const container = document.getElementById('cars-grid');
+            const noResults = document.getElementById('no-results');
+            const resultsCount = document.getElementById('results-count');
+
+            container.innerHTML = '';
+            resultsCount.textContent = `Exibindo ${cars.length} de ${carsData.length} veículos`;
+
+            if (cars.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            cars.forEach(car => {
+                const card = document.createElement('div');
+                card.className = "bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/80 card-hover flex flex-col justify-between";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 bg-slate-200 dark:bg-slate-900 overflow-hidden">
+                            <img src="${car.image}" alt="${car.model}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                            <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-purple-300 font-mono text-[10px] font-bold px-2.5 py-1 rounded-md uppercase border border-purple-500/30">
+                                ${car.tag}
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-xs font-mono text-brand-500 font-bold uppercase">${car.brand}</span>
+                                    <h3 class="font-bold text-slate-900 dark:text-white text-lg line-clamp-1">${car.model}</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-1.5"><i class="fa-regular fa-calendar text-brand-500"></i> ${car.year}</div>
+                                <div class="flex items-center gap-1.5"><i class="fa-solid fa-gauge-high text-brand-500"></i> ${car.km.toLocaleString('pt-BR')} km</div>
+                                <div class="flex items-center gap-1.5"><i class="fa-solid fa-gas-pump text-brand-500"></i> ${car.fuel}</div>
+                                <div class="flex items-center gap-1.5"><i class="fa-solid fa-gears text-brand-500"></i> ${car.gear}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-0 flex items-center justify-between border-t border-slate-100 dark:border-slate-700/50 mt-2">
+                        <div>
+                            <span class="text-[10px] uppercase font-mono text-slate-400 block">Preço à vista</span>
+                            <span class="text-xl font-extrabold text-slate-900 dark:text-white font-mono">${formatCurrency(car.price)}</span>
+                        </div>
+                        <button onclick="openModal(${car.id})" class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-brand-500 hover:text-white text-slate-700 dark:text-slate-200 font-bold text-xs transition-colors">
+                            Detalhes
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Filtro de Busca
+        function filterCars() {
+            const search = document.getElementById('filter-search').value.toLowerCase();
+            const brand = document.getElementById('filter-brand').value;
+            const year = parseInt(document.getElementById('filter-year').value);
+            const maxPrice = parseFloat(document.getElementById('filter-price').value);
+
+            const filtered = carsData.filter(car => {
+                const matchSearch = car.model.toLowerCase().includes(search) || car.brand.toLowerCase().includes(search);
+                const matchBrand = brand === "" || car.brand === brand;
+                const matchYear = car.year >= year;
+                const matchPrice = car.price <= maxPrice;
+
+                return matchSearch && matchBrand && matchYear && matchPrice;
+            });
+
+            renderCars(filtered);
+        }
+
+        // Event Listeners para Filtros
+        document.getElementById('filter-search').addEventListener('input', filterCars);
+        document.getElementById('filter-brand').addEventListener('change', filterCars);
+        document.getElementById('filter-year').addEventListener('change', filterCars);
+        document.getElementById('filter-price').addEventListener('change', filterCars);
+
+        // Funções do Modal
+        function openModal(carId) {
+            const car = carsData.find(c => c.id === carId);
+            if (!car) return;
+
+            document.getElementById('modal-img').src = car.image;
+            document.getElementById('modal-tag').textContent = car.tag;
+            document.getElementById('modal-brand').textContent = car.brand;
+            document.getElementById('modal-title').textContent = car.model;
+            document.getElementById('modal-price').textContent = formatCurrency(car.price);
+            document.getElementById('modal-year').textContent = car.year;
+            document.getElementById('modal-km').textContent = car.km.toLocaleString('pt-BR') + ' km';
+            document.getElementById('modal-gear').textContent = car.gear;
+            document.getElementById('modal-fuel').textContent = car.fuel;
+            document.getElementById('modal-desc').textContent = car.description;
+
+            // Atualiza valores do simulador com base no carro do modal
+            document.getElementById('sim-price').value = car.price;
+            document.getElementById('sim-entry').value = Math.round(car.price * 0.3);
+            calculateFinancing();
+
+            document.getElementById('car-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('car-modal').classList.add('hidden');
+        }
+
+        // Cálculo de Simulação de Financiamento
+        function calculateFinancing() {
+            const price = parseFloat(document.getElementById('sim-price').value) || 0;
+            const entry = parseFloat(document.getElementById('sim-entry').value) || 0;
+            const months = parseInt(document.getElementById('sim-months').value);
+
+            const financed = Math.max(0, price - entry);
+            const interestRate = 0.0129; // 1.29% ao mês
+
+            let monthlyPayment = 0;
+            if (financed > 0) {
+                // Formula de amortização constante com juros compostos simulados
+                monthlyPayment = (financed * interestRate) / (1 - Math.pow(1 + interestRate, -months));
+            }
+
+            document.getElementById('sim-result-financed').textContent = formatCurrency(financed);
+            document.getElementById('sim-result-installment').textContent = `${formatCurrency(monthlyPayment)} /mês`;
+        }
+
+        document.getElementById('sim-price').addEventListener('input', calculateFinancing);
+        document.getElementById('sim-entry').addEventListener('input', calculateFinancing);
+        document.getElementById('sim-months').addEventListener('change', calculateFinancing);
+
+        // Menu Mobile Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Inicialização na carga da página
+        window.onload = function() {
+            renderCars(carsData);
+            calculateFinancing();
+        };
+    </script>
+</body>
+</html>
